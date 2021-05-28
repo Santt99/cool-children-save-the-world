@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TextSpeech;
 
 
 public class ManController : MonoBehaviour
@@ -25,41 +24,11 @@ public class ManController : MonoBehaviour
     private GameController gameController = new GameController();
     void Start()
     {
-        Setting("en-US");
-        SpeechToText.instance.onResultCallback = OnResultSpeech;
-        StartRecording();
+        
     }
 
-    public void Setting(string code)
-    {
-        TextToSpeech.instance.Setting(code, pitch, rate);
-        SpeechToText.instance.Setting(code);
-    }
-    public void StartRecording()
-    {
-#if UNITY_EDITOR
-#else
-        SpeechToText.instance.StartRecording("Speak any");
-#endif
-    }
 
-    public void StopRecording()
-    {
-#if UNITY_EDITOR
-        OnResultSpeech("Not support in editor.");
-#else
-        SpeechToText.instance.StopRecording();
-#endif
-
-    }
-    void OnResultSpeech(string _data)
-    {
-        if (_data == "No")
-        {
-            keepMovingUp = false;
-        }
-
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -93,7 +62,6 @@ public class ManController : MonoBehaviour
         }
         if (!keepAlive)
         {
-            StopRecording();
             Destroy(this.gameObject);
         }
 
