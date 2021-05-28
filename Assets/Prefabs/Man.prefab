@@ -98,3 +98,5 @@ MonoBehaviour:
   moveVelocity: 1
   limitY: {x: -5.7, y: -3}
   trash: {fileID: 3428535860627555632, guid: c440c8fbd26a0bd4b8712568e8916b84, type: 3}
+  pitch: 1
+  rate: 1

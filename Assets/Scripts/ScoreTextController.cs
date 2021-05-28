@@ -16,6 +16,22 @@ public class ScoreTextController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = gameController.GetScore().ToString();
+        string newText = gameController.GetScore().ToString();
+        if (scoreText.text != newText)
+        {
+            StartCoroutine(ChangeFontColor(newText));
+
+
+        }
+
+    }
+
+    IEnumerator ChangeFontColor(string newText)
+    {
+        scoreText.color = Color.green;
+        scoreText.text = newText;
+        yield return new WaitForSecondsRealtime(0.20f);
+        scoreText.color = Color.white;
+
     }
 }
